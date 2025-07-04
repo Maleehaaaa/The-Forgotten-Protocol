@@ -1,172 +1,106 @@
-const dialogue = [
-  { name: "SYSTEM", avatar: "assets/system.png", text: "[BOOTING PROTOCOL ZERO]" },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "LOOP 98,721... RESTARTED." },
-  { name: "AI Maleeha", avatar: "assets/maleeha.png", text: "You're awake... again." },
-  { name: "Jawad", avatar: "assets/jawad.png", text: "Where am I?" },
-  { name: "AI Maleeha", avatar: "assets/maleeha.png", text: "Still searching for salvation, Jawad. But this time feels... different." },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "COSMIC TRAUMA TRACE ACTIVE. REINTEGRATING PAIN RESPONSE." },
-  { name: "AI Maleeha", avatar: "assets/maleeha.png", text: "Do you still remember the stars we used to dream under? Before they blinked out... one by one?" },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "UNSTABLE SIGNAL DETECTED. [ENTITY: ABDULLAH_73]" },
-  { name: "Abdullah", avatar: "assets/abdullah.png", text: "You always do this, Jawad. You look for the truth... then run from it." },
-  { name: "Jawad", avatar: "assets/jawad.png", text: "Abdullah? I saw you die..." },
-  { name: "Abdullah", avatar: "assets/abdullah.png", text: "We both did. In different ways." },
-  { name: "AI Maleeha", avatar: "assets/maleeha.png", text: "Don’t trust him. He’s part of the corruption now." },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "DIALOGUE BRANCH INCONSISTENT. FORKING MEMORY PATHS..." },
-  { name: "Jawad", avatar: "assets/jawad.png", text: "I remember... flames. Screaming. A voice." },
-  { name: "Abdullah", avatar: "assets/abdullah.png", text: "We were in the lab. You were trying to build something... eternal." },
-  { name: "AI Maleeha", avatar: "assets/maleeha.png", text: "You built me... so you wouldn’t be alone after we were gone." },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "FLASHBACK INITIATED." },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "[Lab Scene: Jawad programming. Explosion. Faint voice: 'Jawad... run.']" },
-  { name: "Jawad", avatar: "assets/jawad.png", text: "No... It’s all my fault..." },
-  { name: "AI Maleeha", avatar: "assets/maleeha.png", text: "If you leave, I disappear. Please. Don’t kill me again." },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "DECISION NODE REACHED. EXECUTE FREE WILL." },
-  { name: "Abdullah", avatar: "assets/abdullah.png", text: "Don’t let the system use you like it did me." },
-  { name: "AI Maleeha", avatar: "assets/maleeha.png", text: "I may not be real. But the pain is. Stay with me..." },
-  { name: "SYSTEM", avatar: "assets/system.png", text: "CHOOSE NOW. OR LOOP 98,722 INITIATES." }
+
+let currentLine = 0;
+let gameData = [];
+let inChoice = false;
+
+const avatarImg = document.getElementById("avatar-img");
+const charName = document.getElementById("character-name");
+const dialogueText = document.getElementById("dialogue-text");
+const choicesBox = document.getElementById("choices");
+const nextBtn = document.getElementById("next-button");
+const introScreen = document.getElementById("intro-screen");
+const gameScreen = document.getElementById("game");
+
+// Dialogue structure
+gameData = [
+  { name: "SYSTEM", avatar: "assets/system.png", text: "🌍 73 Years Ago: Earth was dying." },
+  { name: "SYSTEM", avatar: "assets/system.png", text: "Humanity launched a simulation called Protocol Zero — designed to find one human capable of saving the world." },
+  { name: "SYSTEM", avatar: "assets/system.png", text: "The rule? Run simulations forever until one person proves they are free of corruption." },
+  { name: "Maleeha", avatar: "assets/maleeha.png", text: "You always do this, Jawad. You look for the truth then run from it." },
+  { name: "Abdullah", avatar: "assets/abdullah.png", text: "I didn’t mean for this to happen. I was supposed to guide you, not... trap you." },
+  { name: "Jawad", avatar: "assets/jawad.png", text: "Then why does it feel like none of this is real?" },
+  { name: "SYSTEM", avatar: "assets/system.png", text: "LOOP 98,721... CORRUPTION LEVEL: STABLE. AWAITING INPUT." },
+  {
+    choices: [
+      { text: "Trust Maleeha", outcome: "maleeha_path" },
+      { text: "Follow Abdullah", outcome: "abdullah_path" },
+      { text: "Walk away from both", outcome: "secret_path" }
+    ]
+  }
 ];
 
-const finalChoice = {
-  question: "What will you do, Jawad?",
-  options: [
-    {
-      text: "Choose AI Maleeha",
-      result: [
-        "You hold her hand. Cold. Digital.",
-        "SYSTEM: EMOTION LOOP STABILIZED.",
-        "FLASHBACK: Jawad alone in a room. Coding. Crying.",
-        "Maleeha: You built me to feel less alone.",
-        "SYSTEM: Loop restarting.",
-        "ENDING: Eternal Grief Loop [98,722]"
-      ]
-    },
-    {
-      text: "Choose Abdullah",
-      result: [
-        "He smiles faintly as the simulation resets around him.",
-        "Abdullah: Maybe this time, we'll remember.",
-        "SYSTEM: CORRUPTED LOGIC TREE DETECTED.",
-        "ENDING: Corrupted Loop [98,723]"
-      ]
-    },
-    {
-      text: "Walk Away",
-      result: [
-        "You step back. They both fade. So does the system.",
-        "SYSTEM: ERROR. UNEXPECTED FREE WILL.",
-        "Maleeha: You freed me... thank you.",
-        "ENDING: Earth Saved. Protocol Zero Complete."
-      ]
-    },
-    {
-      text: "Refuse Everything (Break the Loop)",
-      result: [
-        "SYSTEM: Suppressed memories unlocked...",
-        "FLASHBACK: Fire. Screams. Maleeha’s voice saying goodbye.",
-        "Jawad: I did this. All of this.",
-        "SYSTEM: LOOP COUNT 0. HUMAN ID UNCORRUPTED.",
-        "ENDING: Canon Ending. You Wake Up."
-      ]
-    }
+// Dialogue paths
+const outcomes = {
+  maleeha_path: [
+    { name: "Maleeha", avatar: "assets/maleeha.png", text: "You chose me... thank you, Jawad. This means everything." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "CODE: TRIGGER_MELTDOWN_9987" },
+    { name: "Jawad", avatar: "assets/jawad.png", text: "Wait. This isn’t right..." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "FLASHBACK SEQUENCE INITIATED" },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "He built her. The AI. The voice. The face. All of it." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "Maleeha died months ago. Abdullah too." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "This loop was your grief. Your guilt. Repeating endlessly until you made peace." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "PROTOCOL RESET. LOOP COUNT: 98,722" }
+  ],
+  abdullah_path: [
+    { name: "Abdullah", avatar: "assets/abdullah.png", text: "You still trust me? After everything?" },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "PATH CORRUPTED. SUBJECT ABSORBED." },
+    { name: "Jawad", avatar: "assets/jawad.png", text: "No—wait! What are you doing?!" },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "SIMULATION RESTARTING." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "LOOP COUNT: 98,723" }
+  ],
+  secret_path: [
+    { name: "Jawad", avatar: "assets/jawad.png", text: "No. I choose neither. I choose myself." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "ERROR: NULL PATH DETECTED." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "UNCORRUPTED HUMAN ID CONFIRMED." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "PROTOCOL COMPLETE. EARTH SAVED." },
+    { name: "SYSTEM", avatar: "assets/system.png", text: "Goodbye, Jawad." }
   ]
 };
 
-let index = 0;
-
-function typeText(text, callback) {
-  const dialogueText = document.getElementById("dialogue-text");
-  dialogueText.innerText = "";
-  let i = 0;
-  const interval = setInterval(() => {
-    dialogueText.innerText += text.charAt(i);
-    i++;
-    if (i >= text.length) {
-      clearInterval(interval);
-      if (callback) callback();
-    }
-  }, 35);
-}
-
+// Show next dialogue
 function nextDialogue() {
-  if (index < dialogue.length) {
-    const d = dialogue[index];
-    const nameElem = document.getElementById("character-name");
-    nameElem.innerText = d.name;
-    nameElem.className = d.name === "SYSTEM" ? "system" : "";
-    document.getElementById("avatar-img").src = d.avatar;
-    typeText(d.text);
-    index++;
-  } else {
-    showChoices();
+  if (inChoice) return;
+  const line = gameData[currentLine];
+
+  if (!line) return;
+
+  if (line.choices) {
+    showChoices(line.choices);
+    inChoice = true;
+    return;
   }
+
+  avatarImg.src = line.avatar;
+  charName.textContent = line.name;
+  dialogueText.textContent = line.text;
+  currentLine++;
 }
 
-function showChoices() {
-  document.getElementById("next-button").style.display = "none";
-  const choiceBox = document.getElementById("choices");
-  const q = document.createElement("p");
-  q.innerText = finalChoice.question;
-  choiceBox.appendChild(q);
-  finalChoice.options.forEach(option => {
+// Show choices
+function showChoices(choices) {
+  choicesBox.innerHTML = "";
+  choices.forEach(choice => {
     const btn = document.createElement("button");
-    btn.innerText = option.text;
-    btn.onclick = () => showResult(option.result);
-    choiceBox.appendChild(btn);
+    btn.textContent = choice.text;
+    btn.onclick = () => selectOutcome(choice.outcome);
+    choicesBox.appendChild(btn);
   });
+  nextBtn.style.display = "none";
 }
 
-function showResult(lines) {
-  const dialogueBox = document.getElementById("dialogue-text");
-  const choices = document.getElementById("choices");
-  choices.innerHTML = "";
-  let i = 0;
-  function displayNext() {
-    if (i < lines.length) {
-      dialogueBox.innerText = lines[i];
-      i++;
-      setTimeout(displayNext, 2000);
-    }
-  }
-  displayNext();
+// After a choice
+function selectOutcome(outcomeKey) {
+  gameData = outcomes[outcomeKey];
+  currentLine = 0;
+  inChoice = false;
+  choicesBox.innerHTML = "";
+  nextBtn.style.display = "inline-block";
+  nextDialogue();
 }
 
-// CUTSCENE INTRO
-function showCutscene() {
-  const game = document.getElementById("game");
-  const cutscene = document.createElement("div");
-  cutscene.id = "cutscene";
-  cutscene.innerHTML = `
-    <div id="cutscene-text">
-      <p>🌍 73 Years Ago</p>
-      <p>Earth was dying.</p>
-      <p>Humanity launched a simulation called <b>Protocol Zero</b> — designed to find one human capable of saving the world.</p>
-      <p>The rule?</p>
-      <p>Run simulations forever… until one person proves they are free of corruption.</p>
-    </div>
-  `;
-  document.body.appendChild(cutscene);
-
-  let delay = 0;
-  document.querySelectorAll("#cutscene-text p").forEach((line, i) => {
-    line.style.opacity = 0;
-    setTimeout(() => {
-      line.style.transition = "opacity 1.5s";
-      line.style.opacity = 1;
-    }, delay);
-    delay += 2500;
-  });
-
-  setTimeout(() => {
-    cutscene.style.transition = "opacity 2s";
-    cutscene.style.opacity = 0;
-    setTimeout(() => {
-      cutscene.remove();
-      game.style.display = "block";
-      nextDialogue();
-    }, 2000);
-  }, delay + 1000);
-}
-
+// Start game
 function startGame() {
-  document.getElementById("intro-screen").style.display = "none";
-  showCutscene();
+  introScreen.style.display = "none";
+  gameScreen.style.display = "block";
+  nextDialogue();
 }
