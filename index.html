@@ -3,35 +3,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Protocol Zero</title>
+  <title>The Protocol Zero</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background Music -->
-  <audio id="bgm" autoplay loop>
-    <source src="assets/sound.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Intro Screen -->
   <div id="intro-screen">
-    <img src="assets/title_intro.png" alt="Protocol Zero" id="intro-img">
-    <button onclick="startGame()">Start Protocol</button>
+    <img src="titleintro.png" id="intro-img">
+    <button onclick="startGame()">Start</button>
   </div>
-
-  <!-- Main Game -->
   <div id="game" style="display:none;">
-    <div id="overlay"></div>
-    <div id="avatar">
-      <img id="avatar-img" src="assets/jawad.png" alt="Avatar">
-    </div>
+    <audio autoplay loop>
+      <source src="sound.mp3" type="audio/mp3">
+    </audio>
+    <img id="avatar-img" src="">
     <div id="dialogue-box">
-      <h2 id="character-name">SYSTEM</h2>
-      <p id="dialogue-text">Booting Protocol Zero...</p>
+      <h2 id="character-name"></h2>
+      <p id="dialogue-text"></p>
+      <div id="choices"></div>
+      <button id="next-button" onclick="nextDialogue()">Next</button>
     </div>
-    <div id="choices"></div>
-    <button id="next-button" onclick="nextDialogue()">Next</button>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
