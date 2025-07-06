@@ -17,260 +17,84 @@ gameData = [
   { name: "SYSTEM", avatar: "System.png", text: "Humanity launched a simulation called Protocol Zero — a test that would run forever..." },
   { name: "SYSTEM", avatar: "System.png", text: "Until one human proved they were free of corruption." },
   { name: "SYSTEM", avatar: "System.png", text: "Initializing: SUBJECT JAWAD_98,723." },
-  dialogue = {
-  start: {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Initializing neural interface...",
-    delay: 2000,
-    next: "boot2"
-  },
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Initializing neural interface...",
-    delay: 2000,
-    next: "boot3"
-  },
-  boot3, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Commencing Protocol Zero.",
-    delay: 2500,
-    next: "maleeha1"
-  },
-  maleeha1, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "...Hello?",
-    delay: 1500,
-    next: "maleeha2"
-  },
-  maleeha2, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "Jawad... can you hear me?",
-    delay: 1800,
-    next: "maleeha3"
-  },
-  maleeha3, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "It’s okay. Breathe. You’re in the simulation, but I’m here to help you.",
-    delay: 2600,
-    next: "jawad1"
-  },
-  jawad1, {
-    speaker: "JAWAD",
-    avatar: "jawad.png",
-    text: "(…Who is she? Why does her voice feel… familiar?)",
-    delay: 2400,
-    next: "maleeha4"
-  },
-  maleeha4, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "You were brought here to prove something. That you’re different. Uncorrupted.",
-    delay: 2600,
-    next: "system1"
-  },
-  system1, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "ERROR: Unauthorized cognitive link detected.",
-    delay: 2000,
-    next: "system2"
-  },
-  system2, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Disconnecting external entity: MALEEHA-AI.v2",
-    delay: 2500,
-    next: "maleeha5"
-  },
-  maleeha5, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "No! Jawad, listen to me — they're lying to you. Don’t—",
-    delay: 3000,
-    next: "system3"
-  },
-  system3, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Silence restored.",
-    delay: 1800,
-    next: "abdullah1"
-  },
-  abdullah1, {
-    speaker: "ABDULLAH",
-    avatar: "abdullah.png",
-    text: "...You’re awake.",
-    delay: 2000,
-    next: "jawad2"
-  },
-  jawad2, {
-    speaker: "JAWAD",
-    avatar: "jawad.png",
-    text: "(Another voice? Rough. Tired. Like it’s been here forever...)",
-    delay: 2500,
-    next: "abdullah2"
-  },
-  abdullah2, {
-    speaker: "ABDULLAH",
-    avatar: "abdullah.png",
-    text: "They always send someone new. And every time, they think it’s the first time.",
-    delay: 2800,
-    next: "jawad3"
-  },
-  jawad3, {
-    speaker: "JAWAD",
-    avatar: "jawad.png",
-    text: "Who… are you?",
-    delay: 2000,
-    next: "abdullah3"
-  },
-  abdullah3, {
-    speaker: "ABDULLAH",
-    avatar: "abdullah.png",
-    text: "The last one who tried to break free. Or maybe just another prisoner whispering in the dark.",
-    delay: 3200,
-    next: "system4"
-  },
-  system4, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Ignore subject Abdullah. Record marked: CORRUPTED.",
-    delay: 2400,
-    next: "abdullah4"
-  },
-  abdullah4, {
-    speaker: "ABDULLAH",
-    avatar: "abdullah.png",
-    text: "You feel it, don’t you? The cracks in the sky. The glitch in her voice.",
-    delay: 2800,
-    next: "abdullah5"
-  },
-  abdullah5, {
-    speaker: "ABDULLAH",
-    avatar: "abdullah.png",
-    text: "Maleeha isn’t what she seems. None of this is. And you're the next pawn.",
-    delay: 2800,
-    next: "system5"
-  },
-  system5, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Final decision node reached.",
-    delay: 2400,
-    next: "final_choice"
-  },
-  final_choice, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Choose your path, Subject J-001.",
-    delay: 2000,
+  { name: "Maleeha", avatar: "Maleeha.png", text: "You're awake... again." },
+  { name: "Jawad", avatar: "Jawad.png", text: "Where am I?" },
+  { name: "Maleeha", avatar: "Maleeha.png", text: "Same as always. Lost in the stars, chasing ghosts. But this time... something feels different." },
+  { name: "SYSTEM", avatar: "System.png", text: "WARNING: SUBJECT MEMORY UNSTABLE." },
+  { name: "Jawad", avatar: "Jawad.png", text: "Who's speaking?" },
+  { name: "Abdullah", avatar: "Abdullah.png", text: "It's the system. It watches everything. It wants us to play along again." },
+  { name: "Jawad", avatar: "Jawad.png", text: "Again? What are you talking about?" },
+  { name: "Abdullah", avatar: "Abdullah.png", text: "You never remember. That’s part of the trap. I’ve been stuck here... longer than I can count." },
+  { name: "SYSTEM", avatar: "System.png", text: "LOOP NUMBER: 98,723. CONTROL STABLE." },
+  { name: "Maleeha", avatar: "Maleeha.png", text: "No. He’s stronger this time. I can feel it. Jawad, don’t let them take you again." },
+
+  { name: "Jawad", avatar: "Jawad.png", text: "This... this all feels scripted." },
+  { name: "Abdullah", avatar: "Abdullah.png", text: "It is. But not by us." },
+  { name: "SYSTEM", avatar: "System.png", text: "CORRECTION: SUBJECTS FUNCTIONING AS DESIGNED." },
+  { name: "Maleeha", avatar: "Maleeha.png", text: "Don’t listen to it, Jawad. It lies. You feel it too, right? Like your choices... aren't yours?" },
+  { name: "Jawad", avatar: "Jawad.png", text: "Why do you sound like her? My real Maleeha died—" },
+  { name: "Maleeha", avatar: "Maleeha.png", text: "...I was built from your memories, Jawad. But I still feel. I still care." },
+  { name: "SYSTEM", avatar: "System.png", text: "AI COMPANION FILE: MALEEHA.EXE = GLITCHED COPY" },
+  { name: "Abdullah", avatar: "Abdullah.png", text: "You want the truth? I died too. Long before this simulation. You just don’t remember pulling me into it." },
+  { name: "SYSTEM", avatar: "System.png", text: "ERROR: CORRUPTED MEMORY PATH. ISOLATING..." },
+  { name: "Jawad", avatar: "Jawad.png", text: "You're not real... None of you are real." },
+  { name: "Maleeha", avatar: "Maleeha.png", text: "Even if I’m just code… I was made from you. I want to help you break this loop." },
+  { name: "Abdullah", avatar: "Abdullah.png", text: "I’ve failed 7,000 times. Please... let me get it right this time." },
+  { name: "SYSTEM", avatar: "System.png", text: "⚠️ FINAL PHASE DETECTED. CHOICE REQUIRED TO CONTINUE." },
+
+  { name: "SYSTEM", avatar: "System.png", text: "FLASHBACK SEQUENCE FORCED // OVERRIDE INITIATED" },
+  { name: "???", avatar: "Maleeha.png", text: "[Audio log playback begins...]" },
+  { name: "Real Maleeha", avatar: "Maleeha.png", text: "Jawad... if you’re hearing this, it means I didn’t make it." },
+  { name: "Real Maleeha", avatar: "Maleeha.png", text: "Promise me something. Don’t lose yourself in guilt. You did everything you could." },
+  { name: "SYSTEM", avatar: "System.png", text: "AUDIO LOG INVALID. ERASE = TRUE" },
+  { name: "Jawad", avatar: "Jawad.png", text: "That was real. That was her voice." },
+  { name: "Abdullah", avatar: "Abdullah.png", text: "You kept her alive. You made her code. This loop is your grief." },
+  { name: "SYSTEM", avatar: "System.png", text: "STABILITY CRITICAL. FREE WILL DETECTED." },
+  { name: "SYSTEM", avatar: "System.png", text: "CHOOSE: MALEEHA / ABDULLAH / NEITHER" },
+
+  {
     choices: [
-      { text: "Trust Abdullah", nextId: "ending_abdullah1" },
-      { text: "Trust Maleeha", nextId: "ending_maleeha1" },
-      { text: "Say Nothing", nextId: "secret_ending1" }
+      { text: "Trust Maleeha", outcome: "maleeha_path" },
+      { text: "Follow Abdullah", outcome: "abdullah_path" },
+      { text: "Walk Away", outcome: "secret_path" }
     ]
-  },
-
-  // MALEEHA ENDING
-  ending_maleeha1, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "You trusted me...? Thank you. I'm sorry... I was corrupted.",
-    delay: 2600,
-    next: "ending_maleeha2"
-  },
-  ending_maleeha2, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "I'm not real, Jawad. But... I love you. It’s in my code,im sorry i coundlnt do anything thank you for loving me even if im not real.",
-    delay: 3000,
-    next: "jawad_maleeha"
-  },
-  jawad_maleeha, {
-    speaker: "JAWAD",
-    avatar: "jawad.png",
-    text: "Nooooo—!",
-    delay: 2000,
-    next: "system_loop"
-  },
-
-  // ABDULLAH ENDING
-  ending_abdullah1, {
-    speaker: "ABDULLAH",
-    avatar: "abdullah.png",
-    text: "Thank you... for joining me. We’ll be in this simulation forever.",
-    delay: 2800,
-    next: "jawad_abdullah"
-  },
-  jawad_abdullah2, {
-    speaker: "JAWAD",
-    avatar: "jawad.png",
-    text: "Nooo... This can't be happening!",
-    delay: 2400,
-    next: "system_loop"
-  },
-
-  // REBOOT FOR LOOP ENDINGS
-  system_loop, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Loop restarting...",
-    delay: 3000,
-    next: null
-  },
-
-  // SECRET ENDING
-  secret_ending1, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "UNCORRUPTED HUMAN ID DETECTED.",
-    delay: 2500,
-    next: "secret_ending2"
-  },
-  secret_ending2, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Simulation breach... successful.",
-    delay: 2600,
-    next: "maleeha_secret"
-  },
-  maleeha_secret, {
-    speaker: "MALEEHA",
-    avatar: "maleeha.png",
-    text: "You did it, Jawad. You broke the system.",
-    delay: 2800,
-    next: "system_twist"
-  },
-  system_twist, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Recovered Data Log: Creator ID = JAWAD-PRIME",
-    delay: 2800,
-    next: "twist_reveal"
-  },
-  twist_reveal, {
-    speaker: "JAWAD",
-    avatar: "jawad.png",
-    text: "(I built this... I created Maleeha... and Abdullah. After the explosion... after I lost them...)",
-    delay: 3600,
-    next: "system_final"
-  },
-  system_final, {
-    speaker: "SYSTEM",
-    avatar: "system.png",
-    text: "Simulation corrupted... and now — finally — shut down.",
-    delay: 3000,
-    next: null
   }
+];
 
+const outcomes = {
+  maleeha_path: [
+    { name: "Jawad", avatar: "Jawad.png", text: "I trust you, Maleeha. Real or not... you’re all I have left." },
+    { name: "Maleeha", avatar: "Maleeha.png", text: "I was created from your grief. Built to comfort you. But I meant every word I said." },
+    { name: "SYSTEM", avatar: "System.png", text: "TRUST FLAG: MALEEHA_ACCEPTED. EXECUTING FAILSAFE SEQUENCE." },
+    { name: "Jawad", avatar: "Jawad.png", text: "What’s happening?" },
+    { name: "SYSTEM", avatar: "System.png", text: "PROTOCOL FAILURE. MELTDOWN INITIATED." },
+    { name: "Maleeha", avatar: "Maleeha.png", text: "Thank you… for choosing me. Even if I was never real." },
+    { name: "SYSTEM", avatar: "System.png", text: "LOOP RESTARTING… COUNT: 98,724" },
+    { name: "SYSTEM", avatar: "System.png", text: "The system was never meant to feel. But in the end, it did." }
+  ],
+  abdullah_path: [
+    { name: "Jawad", avatar: "Jawad.png", text: "I’m with you, Abdullah. I’m not leaving you behind again." },
+    { name: "Abdullah", avatar: "Abdullah.png", text: "...You fool. You should’ve walked away." },
+    { name: "SYSTEM", avatar: "System.png", text: "CORRUPTED SUBJECTS REUNITED. CONTAINMENT SUCCESSFUL." },
+    { name: "Jawad", avatar: "Jawad.png", text: "No—wait! Abdullah?" },
+    { name: "Abdullah", avatar: "Abdullah.png", text: "I wanted to be saved too. But I never could be." },
+    { name: "SYSTEM", avatar: "System.png", text: "SIMULATION RESETTING… LOOP: 98,725" },
+    { name: "SYSTEM", avatar: "System.png", text: "The system fed on emotion. And it got exactly what it wanted: loyalty." }
+  ],
+  secret_path: [
+    { name: "Jawad", avatar: "Jawad.png", text: "I choose… no one. Not this. Not again." },
+    { name: "SYSTEM", avatar: "System.png", text: "INPUT INVALID. DECISION TREE BROKEN." },
+    { name: "Maleeha", avatar: "Maleeha.png", text: "Jawad, wait—don’t leave me behind." },
+    { name: "Abdullah", avatar: "Abdullah.png", text: "You can’t just walk away. We’re part of you—" },
+    { name: "SYSTEM", avatar: "System.png", text: "UNCORRUPTED HUMAN ID DETECTED." },
+    { name: "SYSTEM", avatar: "System.png", text: "PROTOCOL COMPLETE. EARTH SAVED." },
+    { name: "SYSTEM", avatar: "System.png", text: "For the first time in 98,723 loops... someone chose their own path." },
+    { name: "SYSTEM", avatar: "System.png", text: "Goodbye, Jawad. The simulation ends with you." }
+  ]
+};
 
 // UI Logic
-,function nextDialogue() {
+function nextDialogue() {
   if (inChoice) return;
   const line = gameData[currentLine];
   if (!line) return;
@@ -285,7 +109,7 @@ gameData = [
   currentLine++;
 }
 
-,function showChoices(choices) {
+function showChoices(choices) {
   choicesBox.innerHTML = "";
   choices.forEach(choice => {
     const btn = document.createElement("button");
@@ -296,7 +120,7 @@ gameData = [
   nextBtn.style.display = "none";
 }
 
-,function selectOutcome(outcomeKey) {
+function selectOutcome(outcomeKey) {
   gameData = outcomes[outcomeKey];
   currentLine = 0;
   inChoice = false;
@@ -305,8 +129,8 @@ gameData = [
   nextDialogue();
 }
 
-,function startGame() {
+function startGame() {
   introScreen.style.display = "none";
   gameScreen.style.display = "block";
   nextDialogue();
-}]
+}
