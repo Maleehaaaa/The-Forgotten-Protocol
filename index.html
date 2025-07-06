@@ -2,27 +2,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Protocol Zero</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Protocol Zero</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Background Music -->
+  <audio id="bgm" autoplay loop>
+    <source src="sound.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Intro Screen -->
   <div id="intro-screen">
-    <img src="titleintro.png" id="intro-img">
+    <img src="title intro.png" id="intro-img" alt="The Protocol Zero Title">
+    <br><br>
     <button onclick="startGame()">Start</button>
   </div>
-  <div id="game" style="display:none;">
-    <audio autoplay loop>
-      <source src="sound.mp3" type="audio/mp3">
-    </audio>
-    <img id="avatar-img" src="">
+
+  <!-- Game Screen -->
+  <div id="game" style="display: none;">
+    <img id="avatar-img" src="jawad.png" alt="Avatar">
     <div id="dialogue-box">
-      <h2 id="character-name"></h2>
+      <h2 id="character-name">JAWAD</h2>
       <p id="dialogue-text"></p>
-      <div id="choices"></div>
-      <button id="next-button" onclick="nextDialogue()">Next</button>
     </div>
+    <div id="choices"></div>
+    <button id="next-button" style="display: none;">Next</button>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
