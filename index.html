@@ -8,20 +8,16 @@
 </head>
 <body>
   <div id="intro-screen">
-    <img src="title intro.png" alt="Title Screen" class="title-image">
-    <button onclick="startGame()">Start</button>
+    <img src="titleintro.png" alt="Title Screen" class="title-image">
+    <button onclick="startIntro()">Start</button>
   </div>
-
   <div id="intro-text" style="display:none;" class="intro-text">
-    <p>🌍 <strong>73 Years Ago</strong>:<br>
-    Earth was dying. Humanity launched a simulation called <strong>Protocol Zero</strong> — designed to find one human capable of saving the world.<br><br>
-    The rule? Run simulations forever until one person proves they are free of corruption.</p>
+    <p>🌍 <strong>73 Years Ago</strong>:<br>Earth was dying. Humanity launched a simulation called <strong>Protocol Zero</strong> — designed to find one human capable of saving the world.<br><br>The rule? Run simulations forever until one person proves they are free of corruption.</p><br><br>
+    <button onclick="startGame()">Begin Simulation</button>
   </div>
-
   <div id="game" style="display: none;">
-    <audio id="bgm" src="sound.mp3" autoplay loop></audio>
-    <img id="background" src="space_bg.jpg" class="background">
-
+    <audio id="bgm" src="soundmp3.mp3" autoplay loop></audio>
+    <img id="background" src="space_bg.jpeg" class="background">
     <div class="dialogue-box">
       <img id="avatar-img" class="avatar" src="" alt="Avatar">
       <div class="text-box">
@@ -33,5 +29,40 @@
     </div>
   </div>
   <script src="script.js"></script>
+  <script>
+    let currentId = "start";
+    function startIntro() {
+      document.getElementById("intro-screen").style.display = "none";
+      document.getElementById("intro-text").style.display = "block";
+    }
+    function startGame() {
+      document.getElementById("intro-text").style.display = "none";
+      document.getElementById("game").style.display = "block";
+      nextDialogue();
+    }
+    function nextDialogue() {
+      const d = dialogue[currentId];
+      if (!d) return;
+      document.getElementById("character-name").innerText = d.speaker;
+      document.getElementById("dialogue-text").innerText = "...";
+      document.getElementById("avatar-img").src = d.avatar;
+      document.getElementById("choices").innerHTML = "";
+      document.getElementById("next-button").style.display = "none";
+      setTimeout(() => {
+        document.getElementById("dialogue-text").innerText = d.text;
+        if (d.choices) {
+          d.choices.forEach(choice => {
+            const btn = document.createElement("button");
+            btn.innerText = choice.text;
+            btn.onclick = () => { currentId = choice.nextId; nextDialogue(); };
+            document.getElementById("choices").appendChild(btn);
+          });
+        } else if (d.next) {
+          document.getElementById("next-button").style.display = "inline-block";
+          currentId = d.next;
+        }
+      }, d.delay || 1000);
+    }
+  </script>
 </body>
 </html>

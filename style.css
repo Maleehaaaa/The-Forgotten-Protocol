@@ -6,7 +6,6 @@ body {
   color: white;
   overflow: hidden;
 }
-
 .background {
   position: fixed;
   width: 100%;
@@ -14,7 +13,6 @@ body {
   z-index: -1;
   object-fit: cover;
 }
-
 .dialogue-box {
   position: absolute;
   bottom: 40px;
@@ -25,7 +23,6 @@ body {
   border: 2px solid white;
   border-radius: 8px;
 }
-
 .avatar {
   width: 100px;
   height: 100px;
@@ -33,11 +30,9 @@ body {
   margin-right: 15px;
   object-fit: cover;
 }
-
 .text-box {
   overflow: hidden;
 }
-
 #choices button {
   display: block;
   margin: 5px 0;
@@ -48,13 +43,11 @@ body {
   border: 1px solid white;
   cursor: pointer;
 }
-
 .title-image {
   width: 80%;
   margin: 50px auto;
   display: block;
 }
-
 button {
   padding: 12px 20px;
   font-size: 18px;
@@ -63,7 +56,6 @@ button {
   color: black;
   border: none;
 }
-
 .intro-text {
   text-align: center;
   font-size: 20px;

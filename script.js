@@ -1,4 +1,3 @@
-
 const dialogue = {
   start: {
     speaker: "SYSTEM",
