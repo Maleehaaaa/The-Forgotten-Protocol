@@ -2,37 +2,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Protocol Zero</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Background Music -->
-  <audio id="bgm" autoplay loop>
-    <source src="sound.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Intro Screen -->
   <div id="intro-screen">
-    <img src="title intro.png" id="intro-img" alt="The Protocol Zero Title">
-    <br><br>
+    <img src="title intro.png" alt="Title Screen" class="title-image">
     <button onclick="startGame()">Start</button>
   </div>
 
-  <!-- Game Screen -->
-  <div id="game" style="display: none;">
-    <img id="avatar-img" src="jawad.png" alt="Avatar">
-    <div id="dialogue-box">
-      <h2 id="character-name">JAWAD</h2>
-      <p id="dialogue-text"></p>
-    </div>
-    <div id="choices"></div>
-    <button id="next-button" style="display: none;">Next</button>
+  <div id="intro-text" style="display:none;" class="intro-text">
+    <p>🌍 <strong>73 Years Ago</strong>:<br>
+    Earth was dying. Humanity launched a simulation called <strong>Protocol Zero</strong> — designed to find one human capable of saving the world.<br><br>
+    The rule? Run simulations forever until one person proves they are free of corruption.</p>
   </div>
 
+  <div id="game" style="display: none;">
+    <audio id="bgm" src="sound.mp3" autoplay loop></audio>
+    <img id="background" src="space_bg.jpg" class="background">
+
+    <div class="dialogue-box">
+      <img id="avatar-img" class="avatar" src="" alt="Avatar">
+      <div class="text-box">
+        <h2 id="character-name"></h2>
+        <p id="dialogue-text"></p>
+        <div id="choices"></div>
+        <button id="next-button" onclick="nextDialogue()">Next</button>
+      </div>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
