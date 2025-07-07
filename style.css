@@ -61,3 +61,11 @@ button {
   font-size: 20px;
   padding: 50px;
 }
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -16,7 +16,7 @@
     <button onclick="startGame()">Begin Simulation</button>
   </div>
   <div id="game" style="display: none;">
-    <audio id="bgm" src="soundmp3.mp3" autoplay loop></audio>
+    <audio id="bgm" src="sound.mp3"loop></audio>
     <img id="background" src="space_bg.jpeg" class="background">
     <div class="dialogue-box">
       <img id="avatar-img" class="avatar" src="" alt="Avatar">
@@ -35,16 +35,27 @@
       document.getElementById("intro-screen").style.display = "none";
       document.getElementById("intro-text").style.display = "block";
     }
-    function startGame() {
-      document.getElementById("intro-text").style.display = "none";
-      document.getElementById("game").style.display = "block";
-      nextDialogue();
-    }
+   function startGame() {
+  document.getElementById("intro-text").style.display = "none";
+  document.getElementById("game").style.display = "block";
+
+  const bgm = document.getElementById("bgm");
+  if (bgm) {
+    bgm.play().catch(e => console.log("Audio blocked:", e));
+  }
+
+  nextDialogue();
+}
     function nextDialogue() {
       const d = dialogue[currentId];
       if (!d) return;
       document.getElementById("character-name").innerText = d.speaker;
-      document.getElementById("dialogue-text").innerText = "...";
+      const textEl = document.getElementById("dialogue-text");
+textEl.innerText = "";
+textEl.classList.remove("fade-in");
+void textEl.offsetWidth; // triggers reflow
+textEl.innerText = d.text;
+textEl.classList.add("fade-in");
       document.getElementById("avatar-img").src = d.avatar;
       document.getElementById("choices").innerHTML = "";
       document.getElementById("next-button").style.display = "none";
